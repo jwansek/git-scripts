@@ -62,6 +62,8 @@ with ChangeCWD(repo_dir):
     with open(os.path.join(repo_dir, "config"), "a") as f:
         f.write("[gitweb]\n\towner = %s <%s>" % (author, author_email))
 
+subprocess.run(["ln", "-s", os.path.join(os.path.dirname(conf_path), "post-receive-hook.sh"), os.path.join(repo_dir, "hooks", "post-receive")])
+
 if input("Would you like the repository to remain bare? Useful for making mirrors of Github repos. <y/n>: ").lower() != "y": 
     with tempfile.TemporaryDirectory() as tempdir:
         subprocess.run(["git", "clone", repo_url, tempdir])
