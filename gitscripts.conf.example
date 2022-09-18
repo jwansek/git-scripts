@@ -1,0 +1,9 @@
+[git]
+repo_path = /srv/git
+domain = git.eda.gay
+gitignore_templates = /srv/www/gitignore
+license_templates = /srv/www/license-templates/templates
+
+[github]
+user = jwansek
+key = ******************************
