@@ -114,6 +114,8 @@ And add github mirror (insecure method, keys are stored locally):
     git remote add github https://%s:%s@github.com/%s/%s
 Add a github mirror (secure method using SSH):
     git remote add github git@github.com:%s/%s
+To add a `git pushall` alias to push to all remotes:
+    git config --global alias.pushall '!git remote | xargs -L1 git push --all'
     """ % (
         repo_url, repo_url, CONFIG.get("github", "user"), CONFIG.get("github", "key"), 
         CONFIG.get("github", "user"), repo_name, CONFIG.get("github", "user"), repo_name
