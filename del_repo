@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo -n "Input repo name to delete: "
+echo -n "Input repo name to delete (excluding the .git suffix): "
 read repo
 
-rm -fvr /srv/git/$repo
-rm -fvr ~/$repo
-rm -fvr ~/$repo.git
-
+rm -fvr /srv/git/$repo.git
+rm -fvr ~/$repo*
+rm -fv /srv/www/repositories/$repo*

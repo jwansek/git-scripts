@@ -1,5 +1,6 @@
 [git]
 repo_path = /srv/git
+repo_meta_path = /srv/www/repositories
 domain = git.eda.gay
 gitignore_templates = /srv/www/gitignore
 license_templates = /srv/www/license-templates/templates

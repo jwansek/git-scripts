@@ -64,6 +64,17 @@ with ChangeCWD(repo_dir):
 
 subprocess.run(["ln", "-s", os.path.join(os.path.dirname(conf_path), "post-receive-hook.sh"), os.path.join(repo_dir, "hooks", "post-receive")])
 
+repo_metadata_path = os.path.join(CONFIG.get("git", "repo_meta_path"), repo_name + ".conf")
+repo_metadata = configparser.ConfigParser()
+repo_metadata[repo_name] = {
+    "name": repo_name,
+    "path": repo_dir,
+    "visible": not private,
+    "url": repo_url
+}
+with open(repo_metadata_path, "w") as f:
+    repo_metadata.write(f)
+
 if input("Would you like the repository to remain bare? Useful for making mirrors of Github repos. <y/n>: ").lower() != "y": 
     with tempfile.TemporaryDirectory() as tempdir:
         subprocess.run(["git", "clone", repo_url, tempdir])
