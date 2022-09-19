@@ -12,5 +12,6 @@ services:
             - APP_THREADS=4
         volumes:
             - '/media/git:/srv/git:ro'
+            - '/media/gitwww/repositories:/srv/repos:ro'
         ports:
             - '81:80'

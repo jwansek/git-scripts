@@ -27,7 +27,7 @@ if not os.path.exists(conf_path):
 CONFIG = configparser.ConfigParser()
 CONFIG.read(conf_path)
 
-repo_name = urllib.parse.quote_plus(input("Input repository name: "))
+repo_name = input("Input repository name: ").replace(" ", "_")
 if not repo_name.endswith(".git"):
     repo_name += ".git"
 repo_dir = os.path.join(CONFIG.get("git", "repo_path"), repo_name)
@@ -92,7 +92,7 @@ if input("Would you like the repository to remain bare? Useful for making mirror
                     print("")
 
             selected_index = int(input("\nSelect .gitignore template: "))
-            if selected_index != 0:
+            if selected_index != 1:
                 shutil.copy(os.path.join(gitignore_templates_dir, templates[selected_index - 1]) + ".gitignore", ".gitignore", follow_symlinks = True)
 
             licenses_templates_dir =  CONFIG.get("git", "license_templates")
@@ -104,7 +104,7 @@ if input("Would you like the repository to remain bare? Useful for making mirror
                     print("")
             
             selected_index = int(input("\nSelect license template: "))
-            if selected_index != 0:
+            if selected_index != 1:
                 with open(os.path.join(licenses_templates_dir, templates[selected_index - 1]) + ".txt", "r") as f:
                     jinja_template = jinja2.Template(f.read())
 
@@ -118,6 +118,15 @@ if input("Would you like the repository to remain bare? Useful for making mirror
             subprocess.run(["git", "add", "-A"])
             subprocess.run(["git", "commit", "-m", "Initialized repository"])
             subprocess.run(["git", "push", "origin", "master"])
+
+# could do this with the docker API instead maybe
+proc = subprocess.Popen(CONFIG.get("git", "restart_ui_cmd").split(), stdout = subprocess.PIPE)
+while True:
+    line = proc.stdout.readline()
+    if not line:
+        break
+    print(line.decode())
+
 
 print("""
 Repository created. You can now clone or add remote:

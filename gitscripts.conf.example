@@ -4,6 +4,7 @@ repo_meta_path = /srv/www/repositories
 domain = git.eda.gay
 gitignore_templates = /srv/www/gitignore
 license_templates = /srv/www/license-templates/templates
+restart_ui_cmd = bash /srv/www/git-scripts/restart_ui
 
 [github]
 user = jwansek
