@@ -17,6 +17,3 @@ It is recommended to make symlinks to the home directory- e.g.:
 
 Then repositories can be created with `ssh git@git.eda.gay "./make_repo"` or removed with `ssh git@git.eda.gay "./rm_repo"`.
 
-## Web UI
-
-Repositories that are set to public are rendered using [klaus](https://github.com/jonashaag/klaus), using a custom CSS file and Dockerfile. This is in the `klaus/` directory.

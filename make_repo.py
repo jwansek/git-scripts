@@ -64,16 +64,12 @@ with ChangeCWD(repo_dir):
 
 subprocess.run(["ln", "-s", os.path.join(os.path.dirname(conf_path), "post-receive-hook.sh"), os.path.join(repo_dir, "hooks", "post-receive")])
 
-repo_metadata_path = os.path.join(CONFIG.get("git", "repo_meta_path"), repo_name + ".conf")
-repo_metadata = configparser.ConfigParser()
-repo_metadata[repo_name] = {
-    "name": repo_name,
-    "path": repo_dir,
-    "visible": not private,
-    "url": repo_url
-}
-with open(repo_metadata_path, "w") as f:
-    repo_metadata.write(f)
+if not private:
+    repo_metadata_path = os.path.join(CONFIG.get("git", "repo_meta_path"))
+    with open(repo_metadata_path, "a") as f:
+        f.write("repo.url=%s\n" % repo_name)
+        f.write("repo.path=%s\n" % repo_dir)
+        f.write("repo.desc=%s\n\n" % description)
 
 if input("Would you like the repository to remain bare? Useful for making mirrors of Github repos. <y/n>: ").lower() != "y": 
     with tempfile.TemporaryDirectory() as tempdir:
@@ -118,14 +114,6 @@ if input("Would you like the repository to remain bare? Useful for making mirror
             subprocess.run(["git", "add", "-A"])
             subprocess.run(["git", "commit", "-m", "Initialized repository"])
             subprocess.run(["git", "push", "origin", "master"])
-
-# could do this with the docker API instead maybe
-proc = subprocess.Popen(CONFIG.get("git", "restart_ui_cmd").split(), stdout = subprocess.PIPE)
-while True:
-    line = proc.stdout.readline()
-    if not line:
-        break
-    print(line.decode())
 
 
 print("""

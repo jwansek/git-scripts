@@ -1,0 +1,119 @@
+enable-http-clone=1
+
+snapshots=tar.gz zip
+enable-git-config=1
+cache-size=1000
+
+root-title=Eden's personal git server
+root-desc=Warning: Bad code lies henceforth
+repository-sort=age
+
+# Start all URLs from the root mimetype.gif=image/gif
+mimetype.htm=text/html
+mimetype.html=text/html
+mimetype.ico=image/x-icon
+mimetype.jpg=image/jpeg
+mimetype.jpeg=image/jpeg
+mimetype.md=text/markdown
+mimetype.mng=video/x-mng
+mimetype.ora=image/openraster
+mimetype.pam=image/x-portable-arbitrarymap
+mimetype.pbm=image/x-portable-bitmap
+mimetype.pdf=application/pdf
+mimetype.pgm=image/x-portable-graymap
+mimetype.png=image/png
+mimetype.pnm=image/x-portable-anymap
+mimetype.ppm=image/x-portable-pixmap
+mimetype.svg=image/svg+xml
+mimetype.svgz=image/svg+xml
+mimetype.tga=image/x-tga
+mimetype.tif=image/tiff
+mimetype.tiff=image/tiff
+mimetype.webp=image/webp
+mimetype.xbm=image/x-xbitmap
+mimetype.xcf=image/x-xcf
+mimetype.xpm=image/x-xpixmap
+
+virtual-root=/
+css=/cgit-data/cgit.css
+logo=/cgit-data/cgit.png
+favicon=/cgit-data/favicon.ico
+source-filter=/usr/libexec/cgit/filters/syntax-highlighting.sh
+about-filter=/usr/libexec/cgit/filters/about-formatting.sh
+readme=:README.md
+readme=:README
+readme=:readme.md
+readme=:README.rst
+readme=:README.md
+readme=:readme.md
+readme=:README.mkd
+readme=:readme.mkd
+readme=:README.rst
+readme=:readme.rst
+readme=:README.html
+readme=:readme.html
+readme=:README.htm
+readme=:readme.htm
+readme=:README.txt
+readme=:readme.txt
+readme=:README
+readme=:readme
+readme=:INSTALL.md
+readme=:install.md
+readme=:INSTALL.mkd
+readme=:install.mkd
+readme=:INSTALL.rst
+readme=:install.rst
+readme=:INSTALL.html
+readme=:install.html
+readme=:INSTALL.htm
+readme=:install.htm
+readme=:INSTALL.txt
+readme=:install.txt
+readme=:INSTALL
+readme=:install
+
+# Show extra links for each repository on the index page
+enable-index-links=1
+
+# Show owner
+enable-index-owner=1
+
+# Enable ASCII art commit history graph on the log pages
+enable-commit-graph=1
+
+# Allow http transport git clone
+enable-http-clone=1
+
+# Show number of affected files per commit on the log pages
+enable-log-filecount=1
+
+# Show number of added/removed lines per commit on the log pages
+enable-log-linecount=1
+
+# Enable statistics per week, month and quarter
+max-stats=quarter
+
+# Sort items in the repo list case sensitively. Default value: "1"
+case-sensitive-sort=1
+
+# Specifies the maximum size of a blob to display HTML for in KBytes. Default value: "0" (limit disabled)
+max-blob-size=2048
+
+# Specifies the number of entries to list per page on the repository index page. Default value: "50".
+max-repo-count=250
+
+
+# Specifies the maximum number of repo description characters to display on the repository index page.
+# Default value: "80"
+max-repodesc-length=80
+
+# Set the default maximum statistics period. Valid values are "week", "month", "quarter" and "year".
+# If unspecified, statistics are disabled. Default value: none
+max-stats=year
+
+include=/etc/cgitrepos
+remove-suffix=1
+enable-blame=1
+clone-prefix=https://git.reaweb.uk ssh://git@git.reaweb.uk
+

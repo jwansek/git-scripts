@@ -1,0 +1,10 @@
+cgit:
+  image: docker.io/clearlinux/cgit
+  ports:
+    - 8022:80
+  volumes:
+    - /srv/git:/srv/git
+    - ./cgitrc:/etc/cgitrc
+    - ../../cgitrepos:/etc/cgitrepos
+    - ./httpd-cgit.conf:/etc/httpd/conf.d/httpd-cgit.conf
+  restart: unless-stopped
