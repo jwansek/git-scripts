@@ -5,8 +5,7 @@ enable-git-config=1
 cache-size=1000
 
 root-title=Eden's personal git server
-root-desc=Warning: Bad code lies henceforth
-repository-sort=age
+root-desc=Beware: Bad code lies henceforth
 
 # Start all URLs from the root mimetype.gif=image/gif
 mimetype.htm=text/html
@@ -77,7 +76,7 @@ readme=:install
 enable-index-links=1
 
 # Show owner
-enable-index-owner=1
+enable-index-owner=0
 
 # Enable ASCII art commit history graph on the log pages
 enable-commit-graph=1

@@ -6,5 +6,6 @@ cgit:
     - /srv/git:/srv/git
     - ./cgitrc:/etc/cgitrc
     - ../../cgitrepos:/etc/cgitrepos
+    - ./logo.png:/assets/greenboi.png
     - ./httpd-cgit.conf:/etc/httpd/conf.d/httpd-cgit.conf
   restart: unless-stopped
